@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs';
+import { map} from 'rxjs';
 import { Observable } from 'rxjs';
 import { MovieModel } from '../movie-dashboard/movie.model';
 import { HttpHeaders } from '@angular/common/http';
@@ -45,4 +45,5 @@ export class ApiService {
       )
     )
   }
+
 }

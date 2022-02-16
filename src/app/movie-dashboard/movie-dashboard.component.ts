@@ -43,20 +43,23 @@ export class MovieDashboardComponent implements OnInit {
     this.movieObj.mrating = this.movieValue.value.mrating;
     this.movieObj.mindustry = this.movieValue.value.mindustry;
     this.movieObj.mdate = this.movieValue.value.mdate;
-
+    
     this.api.postMovie(this.movieObj).subscribe({next: (v)=>{
       console.log(v)
     },
-    // error: (e)=> {
-    //   console.log(e)
-    //   alert("Error")
-    // },
-    // complete: ()=> {
-    //   console.log("Movie record added!")
-    //   alert("Movie record added!")
-    //   this.getMovie();
-    //   this.movieValue.reset();
-    // }
+
+    error: (e)=> {
+      console.log(e)
+      // alert("Error")
+      alert("Movie record added!")
+      this.getMovie();
+      this.movieValue.reset();
+    },
+    complete: ()=> {
+      alert("Movie record added!")
+      this.getMovie();
+      this.movieValue.reset();
+    }
   })
   }
 
@@ -68,19 +71,15 @@ export class MovieDashboardComponent implements OnInit {
   }
   deleteMovie(data:any){
     this.api.deleteMovie(data.mid).subscribe({next: (v)=>{
-      console.log(v)
-
-
     },
-    // error: (e)=> {
-    //   console.log(e)
-    //   alert("Error")
-    // },
-    // complete: ()=> {
-    //   console.log("Movie record deleted!")
-    //   alert("Movie record deleted!")
-    //   this.getMovie();
-    // }
+    error: (e)=> {
+    alert("Movie record deleted!")
+    this.getMovie();
+    },
+    complete: ()=> {
+      alert("Movie record deleted!")
+     
+    }
   })
   }
 
@@ -109,17 +108,19 @@ export class MovieDashboardComponent implements OnInit {
       console.log(v)
     },
     error: (e)=> {
-      console.log(e)
-      alert("Error")
+      alert("Movie record updated successfully!")
+      this.getMovie();
+      this.movieValue.reset();
+      this.SaveShowBtn()
+      this.movieObj.mid = "";
     },
-    // complete: ()=> {
-    //   console.log("Movie record updated successfully!")
-    //   alert("Movie record updated successfully!")
-    //   this.getMovie();
-    //   this.movieValue.reset();
-    //   this.SaveShowBtn()
-    //   this.movieObj.mid = "";
-    // }
+    complete: ()=> {
+      alert("Movie record updated successfully!")
+      this.getMovie();
+      this.movieValue.reset();
+      this.SaveShowBtn()
+      this.movieObj.mid = "";
+    }
   })
   }
 
@@ -135,10 +136,11 @@ export class MovieDashboardComponent implements OnInit {
     this.btnSaveshow=true;
   }
 
+  movArray:any[]=[];
+  
+   deleteAllMovie(){}
+  
 
-  deleteAllMovie(){
-    
-  }
   key:string = 'id';
   reverse: boolean = false;
   sort(key: string){

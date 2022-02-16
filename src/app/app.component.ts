@@ -1,5 +1,7 @@
+import { MovieModel } from './movie-dashboard/movie.model';
 import { Component } from '@angular/core';
 import { AuthenticationService } from './service/authetication/authentication.service';
+import { catchError, Observable, of, tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -15,5 +17,7 @@ export class AppComponent {
   logOut (){
     this.authenticationService.logOut();
   }
+search(){}
+
 
 }

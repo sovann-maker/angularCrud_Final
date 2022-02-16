@@ -1,5 +1,4 @@
 export class MovieModel{
-
     // id:number = 0;
     mid:string = "";
     mname:string = "";

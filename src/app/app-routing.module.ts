@@ -5,8 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { MovieDashboardComponent } from './movie-dashboard/movie-dashboard.component';
 
 const routes: Routes = [
-  {path:'moviedashboard',component: MovieDashboardComponent},
-  // canActivate: [AuthGuard]},
+  {path:'moviedashboard',component: MovieDashboardComponent
+  ,canActivate: [AuthGuard]},
   { path:'', component: LoginComponent}
 ];
 
